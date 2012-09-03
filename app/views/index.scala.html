@@ -1,0 +1,42 @@
+@(tasks: List[Task], taskForm: Form[Task])
+
+@import helper._
+
+@main("Todo list") {
+    <div class="buffer"/>
+    <div class="container">
+    <div class="header">
+        <div class="headerText">My Tasks</div>
+        <div class="notifyText">
+			@tasks.size() task(s)
+		</div>
+    </div>
+    <div class="addTask">
+    @form(routes.Application.newTask()) {
+        <div class="createInput">
+            <input type="text" id="label" name="label" value="" placeholder="add new task" class="createTextInput">
+            <!-- @inputText(taskForm("label"), 'placeholder -> "add new task", 'class ->"createTextInput") -->
+        </div>
+        <div class="bottonHolder">
+            <input type="submit" class="button creatBut" value="Create" />
+        </div>
+      }
+    </div>
+    <div class="taskPanel">
+           @for(task <- tasks) {
+           <div class="taskRow">
+            @if(task.label == "") {
+              Not Defined
+            }else {
+                <div class="taskText">@task.label</div>
+            }
+             <div class="taskAction">
+                @form(routes.Application.deleteTask(task.id)) {
+                    <input type="submit" value="Delete">
+                }
+              </div>
+           </div>
+           }
+    </div>
+</div>
+}
