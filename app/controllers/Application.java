@@ -93,10 +93,10 @@ public class Application extends Controller {
  /*
   * mongo.local.hostname=localhost
   * mongo.local.port=27017
-  * mongo.remote.hostname=172.30.48.60
+  * mongo.remote.hostname=
   * mongo.remote.port=25189
-  * mongo.remote.username=37f60316-3e7b-47bd-862e-4df288445641
-  * mongo.remote.password=a212f5ad-db8a-4083-acc9-d8eb7d98e2e6
+  * mongo.remote.username=
+  * mongo.remote.password=
   */
   private static DB getDb() {
       String userName = play.Configuration.root().getString("mongo.remote.username");
